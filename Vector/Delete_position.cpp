@@ -31,7 +31,7 @@ public:
     void left_rotation();
     void Right_rotation_n_steps(int number);
 
-    void Delete_position(int position);
+    int Delete_position(int position);
 };
 
 void Vector::capacity_check() {
@@ -61,11 +61,13 @@ void Vector::print() {
 
 
 // the function delete a postion from the vector
-void Vector::Delete_position(int position) {
+int Vector::Delete_position(int position) {
     assert(0 <= position && position < values && values >=0);
+    int the_value = ArraY[position];
     for(int index = position; index < values; ++index)
         ArraY[index] = ArraY[index+1];
     values--;
+    return the_value;
 }
 
 
