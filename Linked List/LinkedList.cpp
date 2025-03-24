@@ -22,6 +22,7 @@ public:
     void Print();
     int get_n_th_item(int order);
     int search_by_index(int number);
+    int improved_search(int number);
 };
 
 
@@ -81,6 +82,27 @@ int LinkedList::search_by_index(int number) {
         if (temp->data == number)
             return index;
         ++index;
+    }
+    return -1;
+}
+
+int LinkedList::improved_search(int number) {
+    Node* prv = nullptr;
+    int counter = 0;
+    for (Node* current = head; current != nullptr; current = current->next, ++counter) {
+        
+        if (!current->next)
+            if (current->data == number)
+                return 1;
+            else
+                return -1;
+        else {
+            if (current->data == number) {
+                swap(current->data, prv->data);
+                return counter - 1;
+            }
+        }
+        prv = current;   
     }
     return -1;
 }
